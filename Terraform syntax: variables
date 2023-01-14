@@ -1,0 +1,32 @@
+Defining Variables:
+
+variable="ec2_instance_name" {
+  default     ="My-Ec2-instance"    #Optional
+  description ="Name of the EC2Instance
+  type        ="string"
+ }
+ 
+ variable="private_subnet" {
+  description   ="list of private subnets"
+  type          ="list"
+ }
+ 
+ 
+ ##Referencing Variables
+ resource"aws_instance""my_ec2_instance" {
+  ami = "ami-53552"
+  instance_type="t2.micro"
+  key_name = "myKeyPair"
+  tags {
+   Name="${var.ec2_instance_name}"   ##ec2_instance_name variable referenced using ${}
+  }
+ }
+ 
+ ##Setting/Passing variables:
+ -Provide a default value:
+ variable"ec2_instance_name" {
+   default     ="My-EC2-Instance"
+   description ="Name of the EC2 Instance"
+   type        ="string"
+   
+ 
