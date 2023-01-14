@@ -1,2 +1,1 @@
-# Defining-Variables-
-Terraform syntax: Variables
+Terraform Syntax
